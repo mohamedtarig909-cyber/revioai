@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Revio AI — Resurrect Dead Leads, Recover Lost Revenue</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%232DD4BF'/><stop offset='0.5' stop-color='%238B7BFF'/><stop offset='1' stop-color='%2356A8FF'/></linearGradient></defs><rect width='32' height='32' rx='8' fill='url(%23g)'/><circle cx='16' cy='16' r='5' fill='%23070A10'/></svg>" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%232DD4BF'/><stop offset='.5' stop-color='%238B7BFF'/><stop offset='1' stop-color='%2356A8FF'/></linearGradient></defs><rect width='32' height='32' rx='8' fill='url(%23g)'/><path d='M5 18h4l3 6 4-16 3 10h8' fill='none' stroke='%2306080D' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -96,6 +96,20 @@
   /* reveal anim */
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
+
+  /* page-load entrance — staggered hero rise-in */
+  @keyframes pagein{from{opacity:0}to{opacity:1}}
+  @keyframes riseIn{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+  @keyframes blurIn{from{opacity:0;filter:blur(14px);transform:translateY(20px)}to{opacity:1;filter:blur(0);transform:none}}
+  body{animation:pagein .5s ease both}
+  nav{animation:pagein .9s ease both}
+  header.hero .pill{animation:riseIn .7s cubic-bezier(.2,.7,.2,1) .05s both}
+  header.hero h1.huge{animation:blurIn .9s cubic-bezier(.2,.7,.2,1) .15s both}
+  header.hero .sub{animation:riseIn .8s cubic-bezier(.2,.7,.2,1) .34s both}
+  header.hero .hero-cta{animation:riseIn .8s cubic-bezier(.2,.7,.2,1) .48s both}
+  header.hero .microtrust{animation:riseIn .8s cubic-bezier(.2,.7,.2,1) .6s both}
+  header.hero .scene{animation:riseIn 1s cubic-bezier(.2,.7,.2,1) .55s both}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 
   /* logos */
   .logos{display:flex;gap:42px;justify-content:center;flex-wrap:wrap;opacity:.6;font-family:var(--display);font-weight:700;color:var(--muted);font-size:17px}
@@ -277,7 +291,7 @@
 
 <div id="site">
 <nav><div class="wrap">
-  <div class="brand"><div class="logo"><span></span></div>Revio<span style="color:var(--signal)">&nbsp;AI</span></div>
+  <div class="brand"><div class="logo"><svg viewBox="0 0 24 24" width="64%" height="64%" fill="none" stroke="#06080D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14h4l2.5 4 3-12 2.5 6H22"/></svg></div>Revio<span style="color:var(--signal)">&nbsp;AI</span></div>
   <div class="navlinks"><a href="#features">Features</a><a href="#calculator">ROI</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
   <div class="navcta">
     <button class="btn btn-ghost" onclick="openAuth('signin')">Sign in</button>
@@ -330,7 +344,7 @@
   <div class="statband">
     <div class="item glass"><div class="n t" data-count="437">0</div><div class="l">Revivable leads / account</div></div>
     <div class="item glass"><div class="n g" data-count="218" data-prefix="$" data-suffix="k">0</div><div class="l">Avg recovered pipeline</div></div>
-    <div class="item glass"><div class="n v" data-count="8">0</div><div class="l">Intelligence engines</div></div>
+    <div class="item glass"><div class="n v" data-count="6">0</div><div class="l">Intelligence engines</div></div>
     <div class="item glass"><div class="n" data-count="71" data-suffix="%">0</div><div class="l">Top-cohort revival rate</div></div>
   </div>
 </div></section>
@@ -361,17 +375,15 @@
 
 <section id="features" class="reveal"><div class="wrap">
   <div class="eyebrow">The engine room</div>
-  <h2>Eight engines. <span class="serif-accent">One command center.</span></h2>
-  <p class="lead">Scoring is computed in code — reproducible and yours. The AI explains the cause and writes the revival.</p>
+  <h2>Six engines. <span class="serif-accent">One command center.</span></h2>
+  <p class="lead">Scoring is computed in code — reproducible and yours. The AI explains the cause and writes the revival. Every capability rolls up into six engines.</p>
   <div class="bento">
-    <div class="cell glass c-big" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">🎯</div><h3>Resurrection scoring</h3><p>Every dead lead gets a 0–100 revival probability from recency, prior intent, fit, and cause of death — then ranked by <b style="color:var(--text)">revival probability × deal value</b> so effort always goes where the money is.</p></div>
-    <div class="cell glass c-sm" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">🩺</div><h3>Why-it-died</h3><p>Diagnoses each lead's real cause of death so revivals are relevant.</p></div>
-    <div class="cell glass c-sm" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">✍️</div><h3>AI messages</h3><p>Personalized re-engagement tuned to history & industry.</p></div>
-    <div class="cell glass c-sm" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">⏱️</div><h3>Best-window timing</h3><p>Sends at the exact moment a lead is most likely to reply.</p></div>
-    <div class="cell glass c-sm" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">📡</div><h3>Multi-channel</h3><p>Email, SMS & WhatsApp with the right cadence per channel.</p></div>
-    <div class="cell glass c-sm" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">📉</div><h3>Decay radar</h3><p>Flags active leads cooling off before they ever go dead.</p></div>
-    <div class="cell glass c-sm" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">🔄</div><h3>Win-back</h3><p>Re-opens past customers showing repurchase signals.</p></div>
-    <div class="cell glass c-big" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">💰</div><h3>Recovered-revenue tracking</h3><p>Attributes every closed deal back to the resurrection that started it. This is the ROI ledger that proves Revio paid for itself — and the reason customers never churn.</p></div>
+    <div class="cell glass c-big" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">🎯</div><h3>Resurrection Engine</h3><p>Scores every dead lead 0–100, diagnoses <i>why</i> it died, writes the personalized revival, and times it — ranked by <b style="color:var(--text)">revival probability × deal value</b>.</p><p style="font-size:12px;color:var(--dim);margin-top:10px;font-family:var(--mono)">scoring · why-it-died · AI messages · timing · lead genome</p></div>
+    <div class="cell glass c-sm" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">📉</div><h3>Pipeline Monitor</h3><p>Flags cooling leads & revenue leaks in dollars, scores pipeline health, cleans CRM data.</p></div>
+    <div class="cell glass c-sm" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">📡</div><h3>Outreach Engine</h3><p>Sends the revivals — multi-touch sequences, autonomous SDR, reply routing.</p></div>
+    <div class="cell glass c-sm" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">🔬</div><h3>Forensics & Coaching</h3><p>Why deals fail: rep performance, lost-deal forensics, call analysis, competitor intel.</p></div>
+    <div class="cell glass c-sm" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">📶</div><h3>Signals & Opportunity</h3><p>Intent data, job changes, funding & social signals — plus upsell/cross-sell.</p></div>
+    <div class="cell glass" style="grid-column:span 6" onmousemove="glow(this,event)"><div class="glowline"></div><div class="ico">🧠</div><h3>Memory &amp; Reporting</h3><p>The compounding brain: business memory, industry benchmarks, the daily executive digest, CFO revenue P&L, 30/60/90-day forecasts, board-ready reports, and an ask-anything AI assistant. The longer you stay, the smarter it gets for your business — which is why customers never leave.</p><p style="font-size:12px;color:var(--dim);margin-top:10px;font-family:var(--mono)">business memory · benchmarks · daily digest · CFO P&L · forecasting · board report · AI assistant</p></div>
   </div>
 </div></section>
 
@@ -468,7 +480,7 @@
       <ul>
         <li>Up to <b style="color:var(--text)">75,000</b> leads / mo</li>
         <li>Everything in Growth, plus:</li>
-        <li>All 8 engines + WhatsApp</li>
+        <li>All 6 engines + WhatsApp</li>
         <li>Pattern discovery + benchmarks</li>
         <li>Institutional memory: ask "why are leads dying?"</li>
         <li>Unlimited seats + RBAC</li>
@@ -502,7 +514,7 @@
 <footer><div class="wrap">
   <div class="fgrid">
     <div class="fcol fabout">
-      <div class="brand"><div class="logo" style="width:28px;height:28px"><span style="width:10px;height:10px"></span></div>Revio AI</div>
+      <div class="brand"><div class="logo" style="width:28px;height:28px"><svg viewBox="0 0 24 24" width="64%" height="64%" fill="none" stroke="#06080D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14h4l2.5 4 3-12 2.5 6H22"/></svg></div>Revio AI</div>
       <p>The autonomous revenue-recovery engine. Resurrect dead leads, recover the revenue you already paid for.</p>
       <form class="fnews" onsubmit="event.preventDefault();toast('Subscribed ✓')"><input type="email" placeholder="you@company.com" required/><button class="btn btn-primary" type="submit">Join</button></form>
     </div>
@@ -521,7 +533,7 @@
 <div id="app"><div class="wrap" style="padding-top:24px;padding-bottom:40px">
   <div class="dash glass">
     <aside class="side">
-      <div class="brand" style="font-size:16px;margin:4px 8px 12px"><div class="logo" style="width:24px;height:24px"><span style="width:9px;height:9px"></span></div>Revio AI</div>
+      <div class="brand" style="font-size:16px;margin:4px 8px 12px"><div class="logo" style="width:24px;height:24px"><svg viewBox="0 0 24 24" width="64%" height="64%" fill="none" stroke="#06080D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14h4l2.5 4 3-12 2.5 6H22"/></svg></div>Revio AI</div>
       <div class="grp">Overview</div>
       <div class="navitem active" data-p="center" onclick="nav(this)">▣ Command center</div>
       <div class="navitem" data-p="revivable" onclick="nav(this)">↻ Revivable leads</div>
@@ -538,19 +550,30 @@
     </aside>
     <div class="main">
       <div class="panel active" data-panel="center">
-        <h2>Command center</h2><p style="color:var(--dim);font-family:var(--mono);font-size:13px">resurrecting · Sunline Solar Co.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+          <div><h2>Command center</h2><p style="color:var(--dim);font-family:var(--mono);font-size:13px" id="dashStatus">live · powered by 6 engines</p></div>
+          <button class="btn btn-primary" onclick="loadDashboard(true)">↻ Run scan</button>
+        </div>
         <div class="cards4">
-          <div class="kpi glass"><div class="k">Resurrection score</div><div class="v t">87</div><div class="s">▲ 4 pts this week</div></div>
-          <div class="kpi glass"><div class="k">Recovered pipeline</div><div class="v g">$218,400</div><div class="s">↑ $41k this month</div></div>
-          <div class="kpi glass"><div class="k">Revivable dead leads</div><div class="v">437</div><div class="s">of 1,902 scanned</div></div>
-          <div class="kpi glass"><div class="k">Leads cooling</div><div class="v" style="color:var(--gold)">11%</div><div class="s">next 7 days</div></div>
+          <div class="kpi glass"><div class="k">Pipeline health</div><div class="v t" id="kScore">—</div><div class="s">0–100</div></div>
+          <div class="kpi glass"><div class="k">Recoverable pipeline</div><div class="v g" id="kRecover">—</div><div class="s">dead-lead pool</div></div>
+          <div class="kpi glass"><div class="k">Revivable leads</div><div class="v" id="kRevivable">—</div><div class="s">this scan</div></div>
+          <div class="kpi glass"><div class="k">Engines live</div><div class="v" style="color:var(--violet)" id="kEngines">—</div><div class="s">running</div></div>
         </div>
         <h3 style="font-family:var(--display);font-weight:700;margin:8px 0 14px">Top resurrection actions</h3>
-        <div class="action glass"><div class="ico" style="background:rgba(45,212,191,.15)">↻</div><div class="body"><h4>Revive 42 cold real-estate buyers showing renewed intent</h4><p>Went dark 12–18mo ago after a showing. Market-intent signals just spiked. Optimal window: next 6 days.</p><div class="meta"><span>recoverable <b>+$96,000</b></span><span>revival prob 71%</span><span>effort low</span></div></div><button class="btn btn-primary" onclick="toast('Revival sequence queued (demo)')">Resurrect</button></div>
-        <div class="action glass"><div class="ico" style="background:rgba(251,191,36,.15)">◷</div><div class="body"><h4>89 active solar leads are cooling — intervene now</h4><p>Decay radar flags 5-day silence after quote. This pattern preceded 64% of last quarter's dead leads.</p><div class="meta"><span>at risk <b class="r">-$54,000</b></span><span>confidence 84%</span><span>effort low</span></div></div><button class="btn btn-ghost" onclick="toast('Opening review (demo)')">Review</button></div>
-        <div class="action glass"><div class="ico" style="background:rgba(139,123,255,.15)">↗</div><div class="body"><h4>362 past customers showing repurchase signals</h4><p>Win-back engine matched them to your highest-converting cohort. AI sequence drafted and ready.</p><div class="meta"><span>recoverable <b>+$41,000</b></span><span>confidence 78%</span><span>effort medium</span></div></div><button class="btn btn-primary" onclick="toast('Sequence launched (demo)')">Launch</button></div>
+        <div id="topActions">
+          <div class="action glass"><div class="ico" style="background:rgba(45,212,191,.15)">↻</div><div class="body"><h4>Run a scan to see live findings</h4><p>Click "Run scan" — the Resurrection Engine scores your dead leads and ranks actions by recoverable dollars. (Live AI findings need an AI key + credit.)</p></div></div>
+        </div>
+        <h3 style="font-family:var(--display);font-weight:700;margin:24px 0 14px">Engines</h3>
+        <div class="cards4" id="engineStrip"></div>
       </div>
-      <div class="panel" data-panel="revivable"><h2>Revivable leads</h2><div class="empty glass" style="margin-top:20px">Ranked dead leads appear here after a scan. Connect Supabase + upload a CSV to populate real data.</div></div>
+      <div class="panel" data-panel="revivable"><h2>Revivable leads</h2>
+        <div style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <label class="btn btn-primary" style="cursor:pointer">⬆ Upload CSV<input type="file" accept=".csv" style="display:none" onchange="uploadCsv(this)"></label>
+          <span style="color:var(--dim);font-size:13px;font-family:var(--mono)">Columns: Name · Email · Deal Value · Last Contact · Lost Reason</span>
+        </div>
+        <div id="revivableOut" style="margin-top:18px;color:var(--dim)">Upload a CSV or run a scan to see ranked revivable leads.</div>
+      </div>
       <div class="panel" data-panel="why"><h2>Why-it-died</h2><div class="empty glass" style="margin-top:20px">Aggregate cause-of-death analysis lands here after your first scan.</div></div>
       <div class="panel" data-panel="sequences"><h2>Revival sequences</h2><div class="empty glass" style="margin-top:20px">Approve and edit AI-drafted re-engagement sequences. Sending stays off until opt-out/suppression is live.</div></div>
       <div class="panel" data-panel="outreach"><h2>Multi-channel outreach</h2><div class="empty glass" style="margin-top:20px">Email, SMS and WhatsApp delivery. Requires a sending provider + compliance setup before going live.</div></div>
@@ -600,8 +623,34 @@
   /* ── Supabase (real auth) ── */
   const SUPABASE_URL = "https://ufpbgagijhkmmfyqihil.supabase.co";
   const SUPABASE_ANON_KEY = "sb_publishable_x1zGB0kWH3DOe8uBnU1FWA_eGrqAaqr";
-  let sb=null;
-  if(SUPABASE_URL && SUPABASE_ANON_KEY){const s=document.createElement('script');s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";s.onload=()=>{sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)};document.head.appendChild(s);}
+  let sb=null, currentUser=null, authMode='signin';
+  let oauthReturn = location.hash.includes('access_token') || /[?&]code=/.test(location.search);
+  if(SUPABASE_URL && SUPABASE_ANON_KEY){
+    const s=document.createElement('script');
+    s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+    s.onload=()=>{
+      sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+      sb.auth.onAuthStateChange((event,session)=>{
+        currentUser=session?session.user:null; updateAuthUI();
+        if(event==='SIGNED_IN' && oauthReturn){oauthReturn=false;history.replaceState(null,'',location.pathname);launchApp();toast('Signed in ✓');}
+      });
+      sb.auth.getSession().then(({data})=>{currentUser=data.session?data.session.user:null;updateAuthUI();});
+    };
+    document.head.appendChild(s);
+  }
+  function updateAuthUI(){
+    const cta=document.querySelector('.navcta'); if(!cta) return;
+    if(currentUser){
+      const name=(currentUser.user_metadata&&currentUser.user_metadata.full_name)||currentUser.email;
+      cta.innerHTML='<span style="color:var(--muted);font-size:13px;font-family:var(--mono);max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+name+'</span>'+
+        '<button class="btn btn-ghost" onclick="launchApp()">Command center</button>'+
+        '<button class="btn btn-primary" onclick="signOut()">Sign out</button>';
+    } else {
+      cta.innerHTML='<button class="btn btn-ghost" onclick="openAuth(\'signin\')">Sign in</button>'+
+        '<button class="btn btn-primary" onclick="openAuth(\'signup\')">Get started</button>';
+    }
+  }
+  function signOut(){if(sb)sb.auth.signOut();currentUser=null;updateAuthUI();backToSite();toast('Signed out')}
 
   /* ── Whop checkout links ── */
   const WHOP_LINKS={starter:"https://whop.com/revio-ai/1-a6-15a9/",growth:"https://whop.com/revio-ai/2-f7-5aa7/",scale:"https://whop.com/revio-ai/3-b5/"};
@@ -645,9 +694,80 @@
   calcRoi();
 
   /* command center (gated) */
-  function launchApp(){site.style.display='none';app.style.display='block';scrollTo(0,0)}
+  function launchApp(){site.style.display='none';app.style.display='block';scrollTo(0,0);loadDashboard()}
   function backToSite(){app.style.display='none';site.style.display='block'}
   function nav(el){document.querySelectorAll('.navitem').forEach(n=>n.classList.remove('active'));el.classList.add('active');const p=el.dataset.p;document.querySelectorAll('.panel').forEach(pn=>pn.classList.toggle('active',pn.dataset.panel===p))}
+
+  /* ── Live backend wiring (FastAPI serves this site + the API on one origin) ── */
+  const API_BASE = "";   // same-origin; works when served by the API or deployed
+  function esc(s){return String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+  function fmtUSD(n){return '$'+Math.round(Math.abs(+n||0)).toLocaleString()}
+  function setTxt(id,v){const el=document.getElementById(id);if(el)el.textContent=v}
+  async function authHeaders(extra){
+    const h=Object.assign({}, extra||{});
+    if(sb){try{const{data}=await sb.auth.getSession();if(data.session)h['Authorization']='Bearer '+data.session.access_token}catch(e){}}
+    if(!h['Authorization'])h['Authorization']='Bearer demo';   // dev fallback
+    return h;
+  }
+  function renderLeads(leads){
+    if(!leads||!leads.length)return '<div style="color:var(--dim)">No leads scored.</div>';
+    return '<div class="glass" style="padding:8px;border-radius:var(--r);overflow:auto"><table class="cmp"><tr><th>Lead</th><th>Score</th><th>Recoverable</th><th>Cause</th><th>Window</th></tr>'+
+      leads.map(L=>'<tr><td class="hi">'+esc(L.id)+'</td><td>'+L.dead_lead_score+'/100</td><td>'+fmtUSD(L.expected_value)+'</td><td>'+esc(L.objection)+'</td><td>'+L.best_window_days+'d</td></tr>').join('')+
+      '</table></div>';
+  }
+  let dashLoaded=false;
+  async function loadDashboard(force){
+    if(dashLoaded&&!force)return;
+    setTxt('dashStatus','scanning…');
+    try{
+      const headers=await authHeaders();
+      const [scanR,engR]=await Promise.all([
+        fetch(API_BASE+'/v1/intelligence/scan?industry=real_estate&run_ai=false',{method:'POST',headers}),
+        fetch(API_BASE+'/v1/intelligence/engines',{headers})
+      ]);
+      if(!scanR.ok)throw new Error('scan '+scanR.status);
+      const scan=await scanR.json();
+      const h=scan.pipeline_health||{};
+      setTxt('kScore',h.score!=null?h.score:'—');
+      setTxt('kRecover',fmtUSD(scan.total_recoverable));
+      setTxt('kRevivable',(scan.scored_leads||[]).length);
+      const items=(scan.findings&&scan.findings.length)?scan.findings:(scan.scored_leads||[]);
+      document.getElementById('topActions').innerHTML = items.slice(0,5).map(it=>{
+        const title=it.title||(esc(it.id)+' · score '+it.dead_lead_score+'/100');
+        const desc=it.description||it.recommended_action||('Cause: '+esc(it.objection||'—'));
+        const dollar=it.dollar_impact_monthly!=null?it.dollar_impact_monthly:it.expected_value;
+        return '<div class="action glass"><div class="ico" style="background:rgba(45,212,191,.15)">↻</div><div class="body"><h4>'+esc(title)+'</h4><p>'+esc(desc)+'</p><div class="meta"><span>recoverable <b>'+fmtUSD(dollar)+'</b></span>'+(it.confidence!=null?'<span>confidence '+it.confidence+'</span>':'')+'</div></div></div>';
+      }).join('')||'<div class="empty glass">No findings.</div>';
+      document.getElementById('revivableOut').innerHTML=renderLeads(scan.scored_leads);
+      if(engR.ok){
+        const eng=(await engR.json()).engines||[];
+        setTxt('kEngines',eng.filter(e=>e.implemented).length+'/'+eng.length);
+        document.getElementById('engineStrip').innerHTML=eng.map(e=>{
+          const col=e.status==='live'?'var(--signal)':e.status==='partial'?'var(--gold)':'var(--dim)';
+          return '<div class="kpi glass"><div class="k">'+esc(e.title)+'</div><div class="v" style="font-size:15px;color:'+col+'">'+e.status+'</div><div class="s">'+e.absorbs.length+' modules</div></div>';
+        }).join('');
+      }
+      setTxt('dashStatus','live · '+(scan.ai_enabled?'AI on':'scoring only')+' · '+new Date().toLocaleTimeString());
+      dashLoaded=true;
+    }catch(e){
+      setTxt('dashStatus','demo mode — run the server or deploy for live data');
+      toast('Live data needs the server running / deployed');
+    }
+  }
+  async function uploadCsv(input){
+    const file=input.files[0];if(!file)return;
+    toast('Scoring '+file.name+'…');
+    const fd=new FormData();fd.append('file',file);
+    try{
+      const headers=await authHeaders();delete headers['Content-Type'];
+      const r=await fetch(API_BASE+'/v1/ingest/csv?industry=real_estate',{method:'POST',headers,body:fd});
+      if(!r.ok)throw new Error(r.status);
+      const d=await r.json();
+      document.getElementById('revivableOut').innerHTML=
+        '<p style="margin:0 0 12px;color:var(--muted)">Parsed <b style="color:var(--text)">'+d.leads_parsed+'</b> leads · recoverable <b style="color:var(--signal)">'+fmtUSD(d.total_recoverable)+'</b> · health '+(d.pipeline_health&&d.pipeline_health.score)+'/100</p>'+renderLeads(d.scored_leads);
+      toast('Scored '+d.leads_parsed+' leads ✓');
+    }catch(e){toast('Upload failed — is the server running?')}
+  }
 
   /* paywall */
   const pwOv=document.getElementById('paywallOv');
@@ -658,7 +778,7 @@
   /* auth */
   const ov=document.getElementById('overlay');
   const authTitle=document.getElementById('authTitle'),authSub=document.getElementById('authSub'),authBtn=document.getElementById('authBtn'),nameField=document.getElementById('nameField'),authSwap=document.getElementById('authSwap');
-  function openAuth(mode){closePaywall();ov.classList.add('open');const su=mode==='signup';
+  function openAuth(mode){authMode=mode;closePaywall();ov.classList.add('open');const su=mode==='signup';
     authTitle.textContent=su?'Create your account':'Welcome back';
     authSub.textContent=su?'Start recovering dead leads in minutes':'Sign in to your Revio AI command center';
     authBtn.textContent=su?'Create account':'Sign in';nameField.style.display=su?'block':'none';
@@ -667,7 +787,19 @@
   ov.addEventListener('click',e=>{if(e.target===ov)closeAuth()});
   async function googleAuth(){if(sb){await sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin}});return}toast('Enable Google provider in Supabase to use this')}
   async function emailAuth(e){e.preventDefault();const f=e.target,email=f.querySelector('input[type=email]').value,pw=f.querySelector('input[type=password]').value;
-    if(sb){const{error}=await sb.auth.signInWithPassword({email,password:pw});if(error){toast(error.message);return}closeAuth();launchApp();toast('Signed in ✓');return}
+    const nmInput=nameField.querySelector('input');const nm=nmInput?nmInput.value:'';
+    if(sb){
+      if(authMode==='signup'){
+        const{data,error}=await sb.auth.signUp({email,password:pw,options:{data:{full_name:nm}}});
+        if(error){toast(error.message);return}
+        if(data.session){closeAuth();launchApp();toast('Account created ✓')}
+        else{closeAuth();toast('Check your email to confirm your account ✉')}
+        return;
+      }
+      const{error}=await sb.auth.signInWithPassword({email,password:pw});
+      if(error){toast(error.message);return}
+      closeAuth();launchApp();toast('Signed in ✓');return;
+    }
     closeAuth();toast('Demo sign-in — connect Supabase for real accounts');launchApp()}
 
   let tt;function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2800)}
