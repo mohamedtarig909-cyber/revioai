@@ -278,9 +278,26 @@
   @media(max-width:920px){
     .navlinks{display:none}
     .statband{grid-template-columns:1fr 1fr}.twocol{grid-template-columns:1fr;gap:30px}.twocol h2,.twocol .lead{text-align:center}
-    .bento{grid-template-columns:1fr 1fr}.c-wide,.c-tall,.c-sm,.c-big{grid-column:span 1}
+    .bento{grid-template-columns:1fr 1fr}.c-wide,.c-tall,.c-sm,.c-big{grid-column:span 1}.cell[style*="span 6"]{grid-column:span 2!important}
     .steps,.prices,.tcards,.paywall-plans{grid-template-columns:1fr}.roi{grid-template-columns:1fr}.roi .result{border-left:none;border-top:1px solid var(--border)}
-    .fgrid{grid-template-columns:1fr 1fr}.dash{grid-template-columns:1fr}.side{display:none}.cards4{grid-template-columns:1fr 1fr}
+    .fgrid{grid-template-columns:1fr 1fr}.cards4{grid-template-columns:1fr 1fr}
+    .dash{grid-template-columns:1fr}
+    .side{display:flex;flex-direction:row;gap:8px;overflow-x:auto;border-right:none;border-bottom:1px solid var(--border);padding:12px;-webkit-overflow-scrolling:touch}
+    .side .grp,.side .brand{display:none}
+    .side .navitem{white-space:nowrap;flex-shrink:0;padding:9px 12px}
+    .side>.btn{flex-shrink:0;width:auto!important;margin-top:0!important}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 18px}
+    nav .wrap{height:60px}.navcta .btn{padding:9px 13px;font-size:13px}.navcta{gap:8px}
+    header.hero{padding:54px 0 44px}h1.huge{letter-spacing:-1.5px}
+    section{padding:54px 0}.lead{font-size:16px;margin-bottom:38px}
+    .hero-cta{flex-direction:column}.hero-cta .btn{width:100%;justify-content:center}
+    .bento{grid-template-columns:1fr}.cell[style*="span 6"]{grid-column:span 1!important}
+    .statband{grid-template-columns:1fr}.cards4{grid-template-columns:1fr 1fr}
+    .roi .controls,.roi .result{padding:24px}
+    .modal{padding:26px}.modal h3{font-size:22px}.bigcta{padding:46px 22px}
+    .price{padding:26px}.cell{padding:22px}.main{padding:22px 16px}
   }
 </style>
 </head>
@@ -295,7 +312,7 @@
   <div class="navlinks"><a href="#features">Features</a><a href="#calculator">ROI</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
   <div class="navcta">
     <button class="btn btn-ghost" onclick="openAuth('signin')">Sign in</button>
-    <button class="btn btn-primary" onclick="openAuth('signup')">Get started</button>
+    <button class="btn btn-primary" onclick="goCheckout()">Get started</button>
   </div>
 </div></nav>
 
@@ -304,8 +321,8 @@
   <h1 class="huge">Your dead leads<br>aren't dead.<br><span class="serif-accent">They're revenue you forgot to collect.</span></h1>
   <p class="sub">Revio AI scores every cold lead, diagnoses exactly why it went quiet, and writes the message that brings it back — so you reopen deals you already paid to acquire.</p>
   <div class="hero-cta">
-    <button class="btn btn-primary btn-lg" onclick="openAuth('signup')">Start resurrecting →</button>
-    <button class="btn btn-ghost btn-lg" onclick="paywall()">Launch command center</button>
+    <button class="btn btn-primary btn-lg" onclick="goCheckout()">Start resurrecting →</button>
+    <button class="btn btn-ghost btn-lg" onclick="goCheckout()">Launch command center</button>
   </div>
   <div class="microtrust"><span><b>437</b> revivable leads / account</span><span><b>$218k</b> avg recovered pipeline</span><span>14-day trial · no card to look</span></div>
 
@@ -415,7 +432,7 @@
       <div class="rlabel">Estimated recoverable revenue</div>
       <div class="big" id="roiOut">$750,000</div>
       <div class="note" id="roiBreak">From ~750 revivable leads · across your pipeline</div>
-      <button class="btn btn-primary btn-lg" style="margin-top:22px;justify-content:center" onclick="openAuth('signup')">Recover it →</button>
+      <button class="btn btn-primary btn-lg" style="margin-top:22px;justify-content:center" onclick="goCheckout()">Recover it →</button>
     </div>
   </div>
 </div></section>
@@ -424,8 +441,8 @@
   <div class="eyebrow">Why Revio</div>
   <h2>Not a CRM. <span class="serif-accent">Not a mail-merge.</span></h2>
   <p class="lead">Most tools send what you tell them. Revio decides what's worth sending.</p>
-  <div class="glass" style="padding:8px;border-radius:var(--r);overflow:hidden">
-    <table class="cmp">
+  <div class="glass" style="padding:8px;border-radius:var(--r);overflow-x:auto">
+    <table class="cmp" style="min-width:520px">
       <tr><th>Capability</th><th>Your CRM</th><th>Generic AI writer</th><th class="hi">Revio AI</th></tr>
       <tr><td class="hi">Ranks leads by recoverable $</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
       <tr><td class="hi">Diagnoses why each lead died</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
@@ -507,7 +524,7 @@
   <div class="bigcta">
     <h2 style="margin-bottom:14px">There's a fortune <span class="serif-accent">in your "lost" column.</span></h2>
     <p class="lead" style="margin-bottom:28px">Run one scan on your dead-lead list and see the recoverable revenue for yourself.</p>
-    <div class="hero-cta"><button class="btn btn-primary btn-lg" onclick="openAuth('signup')">Start resurrecting →</button><button class="btn btn-ghost btn-lg" onclick="paywall()">Launch command center</button></div>
+    <div class="hero-cta"><button class="btn btn-primary btn-lg" onclick="goCheckout()">Start resurrecting →</button><button class="btn btn-ghost btn-lg" onclick="goCheckout()">Launch command center</button></div>
   </div>
 </div></section>
 
@@ -518,7 +535,7 @@
       <p>The autonomous revenue-recovery engine. Resurrect dead leads, recover the revenue you already paid for.</p>
       <form class="fnews" onsubmit="event.preventDefault();toast('Subscribed ✓')"><input type="email" placeholder="you@company.com" required/><button class="btn btn-primary" type="submit">Join</button></form>
     </div>
-    <div class="fcol"><h5>Product</h5><a href="#features">Features</a><a href="#calculator">ROI calculator</a><a href="#pricing">Pricing</a><a onclick="paywall()" style="cursor:pointer">Command center</a></div>
+    <div class="fcol"><h5>Product</h5><a href="#features">Features</a><a href="#calculator">ROI calculator</a><a href="#pricing">Pricing</a><a onclick="goCheckout()" style="cursor:pointer">Command center</a></div>
     <div class="fcol"><h5>Company</h5><a href="#how">How it works</a><a href="#faq">FAQ</a><a onclick="openAuth('signin')" style="cursor:pointer">Sign in</a><a href="#">Contact</a></div>
     <div class="fcol"><h5>Legal</h5><a href="#">Privacy policy</a><a href="#">Terms of service</a><a href="#">Compliance</a><a href="#">Data deletion</a></div>
   </div>
@@ -552,7 +569,7 @@
       <div class="panel active" data-panel="center">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
           <div><h2>Command center</h2><p style="color:var(--dim);font-family:var(--mono);font-size:13px" id="dashStatus">live · powered by 6 engines</p></div>
-          <button class="btn btn-primary" onclick="loadDashboard(true)">↻ Run scan</button>
+          <button class="btn btn-primary" onclick="runScan()">⬆ Upload &amp; scan</button>
         </div>
         <div class="cards4">
           <div class="kpi glass"><div class="k">Pipeline health</div><div class="v t" id="kScore">—</div><div class="s">0–100</div></div>
@@ -569,7 +586,7 @@
       </div>
       <div class="panel" data-panel="revivable"><h2>Revivable leads</h2>
         <div style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-          <label class="btn btn-primary" style="cursor:pointer">⬆ Upload CSV<input type="file" accept=".csv" style="display:none" onchange="uploadCsv(this)"></label>
+          <label class="btn btn-primary" style="cursor:pointer">⬆ Upload CSV<input type="file" id="csvFile" accept=".csv" style="display:none" onchange="uploadCsv(this)"></label>
           <span style="color:var(--dim);font-size:13px;font-family:var(--mono)">Columns: Name · Email · Deal Value · Last Contact · Lost Reason</span>
         </div>
         <div id="revivableOut" style="margin-top:18px;color:var(--dim)">Upload a CSV or run a scan to see ranked revivable leads.</div>
@@ -655,6 +672,7 @@
   /* ── Whop checkout links ── */
   const WHOP_LINKS={starter:"https://whop.com/revio-ai/1-a6-15a9/",growth:"https://whop.com/revio-ai/2-f7-5aa7/",scale:"https://whop.com/revio-ai/3-b5/"};
   function checkout(el){const plan=el.dataset.plan,url=WHOP_LINKS[plan];if(url){window.location.href=url}else{toast('Checkout link for "'+plan+'" not set')}}
+  function goCheckout(plan){const url=WHOP_LINKS[plan||'growth']||WHOP_LINKS.growth;if(url){window.location.href=url}else{toast('Checkout link not set')}}
 
   document.getElementById('yr').textContent=new Date().getFullYear();
   const site=document.getElementById('site'),app=document.getElementById('app');
@@ -698,60 +716,48 @@
   function backToSite(){app.style.display='none';site.style.display='block'}
   function nav(el){document.querySelectorAll('.navitem').forEach(n=>n.classList.remove('active'));el.classList.add('active');const p=el.dataset.p;document.querySelectorAll('.panel').forEach(pn=>pn.classList.toggle('active',pn.dataset.panel===p))}
 
-  /* ── Live backend wiring (FastAPI serves this site + the API on one origin) ── */
-  const API_BASE = "";   // same-origin; works when served by the API or deployed
+  /* ── Live client system — no demo data. Clients see only what they upload. ── */
+  const API_BASE = "";   // same-origin (FastAPI serves this site + the API)
+  let clientData=null;
   function esc(s){return String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
   function fmtUSD(n){return '$'+Math.round(Math.abs(+n||0)).toLocaleString()}
   function setTxt(id,v){const el=document.getElementById(id);if(el)el.textContent=v}
   async function authHeaders(extra){
     const h=Object.assign({}, extra||{});
     if(sb){try{const{data}=await sb.auth.getSession();if(data.session)h['Authorization']='Bearer '+data.session.access_token}catch(e){}}
-    if(!h['Authorization'])h['Authorization']='Bearer demo';   // dev fallback
-    return h;
+    return h;   // real signed-in client session only
   }
   function renderLeads(leads){
-    if(!leads||!leads.length)return '<div style="color:var(--dim)">No leads scored.</div>';
-    return '<div class="glass" style="padding:8px;border-radius:var(--r);overflow:auto"><table class="cmp"><tr><th>Lead</th><th>Score</th><th>Recoverable</th><th>Cause</th><th>Window</th></tr>'+
+    if(!leads||!leads.length)return '<div style="color:var(--dim)">No leads scored yet.</div>';
+    return '<div class="glass" style="padding:8px;border-radius:var(--r);overflow-x:auto"><table class="cmp" style="min-width:520px"><tr><th>Lead</th><th>Score</th><th>Recoverable</th><th>Cause</th><th>Window</th></tr>'+
       leads.map(L=>'<tr><td class="hi">'+esc(L.id)+'</td><td>'+L.dead_lead_score+'/100</td><td>'+fmtUSD(L.expected_value)+'</td><td>'+esc(L.objection)+'</td><td>'+L.best_window_days+'d</td></tr>').join('')+
       '</table></div>';
   }
-  let dashLoaded=false;
-  async function loadDashboard(force){
-    if(dashLoaded&&!force)return;
-    setTxt('dashStatus','scanning…');
+  function uploadPrompt(){
+    return '<div class="action glass"><div class="ico" style="background:rgba(45,212,191,.15)">⬆</div><div class="body"><h4>Upload your dead-lead list to begin</h4><p>Drop in a CSV (Name, Email, Deal Value, Last Contact, Lost Reason). Revio scores every lead and ranks your recoverable revenue — your data only, nothing sample.</p></div><button class="btn btn-primary" onclick="runScan()">Upload CSV</button></div>';
+  }
+  function runScan(){const i=document.getElementById('csvFile');if(i)i.click()}
+  async function loadDashboard(){
+    setTxt('dashStatus','loading…');
     try{
       const headers=await authHeaders();
-      const [scanR,engR]=await Promise.all([
-        fetch(API_BASE+'/v1/intelligence/scan?industry=real_estate&run_ai=false',{method:'POST',headers}),
-        fetch(API_BASE+'/v1/intelligence/engines',{headers})
-      ]);
-      if(!scanR.ok)throw new Error('scan '+scanR.status);
-      const scan=await scanR.json();
-      const h=scan.pipeline_health||{};
-      setTxt('kScore',h.score!=null?h.score:'—');
-      setTxt('kRecover',fmtUSD(scan.total_recoverable));
-      setTxt('kRevivable',(scan.scored_leads||[]).length);
-      const items=(scan.findings&&scan.findings.length)?scan.findings:(scan.scored_leads||[]);
-      document.getElementById('topActions').innerHTML = items.slice(0,5).map(it=>{
-        const title=it.title||(esc(it.id)+' · score '+it.dead_lead_score+'/100');
-        const desc=it.description||it.recommended_action||('Cause: '+esc(it.objection||'—'));
-        const dollar=it.dollar_impact_monthly!=null?it.dollar_impact_monthly:it.expected_value;
-        return '<div class="action glass"><div class="ico" style="background:rgba(45,212,191,.15)">↻</div><div class="body"><h4>'+esc(title)+'</h4><p>'+esc(desc)+'</p><div class="meta"><span>recoverable <b>'+fmtUSD(dollar)+'</b></span>'+(it.confidence!=null?'<span>confidence '+it.confidence+'</span>':'')+'</div></div></div>';
-      }).join('')||'<div class="empty glass">No findings.</div>';
-      document.getElementById('revivableOut').innerHTML=renderLeads(scan.scored_leads);
-      if(engR.ok){
-        const eng=(await engR.json()).engines||[];
-        setTxt('kEngines',eng.filter(e=>e.implemented).length+'/'+eng.length);
-        document.getElementById('engineStrip').innerHTML=eng.map(e=>{
-          const col=e.status==='live'?'var(--signal)':e.status==='partial'?'var(--gold)':'var(--dim)';
-          return '<div class="kpi glass"><div class="k">'+esc(e.title)+'</div><div class="v" style="font-size:15px;color:'+col+'">'+e.status+'</div><div class="s">'+e.absorbs.length+' modules</div></div>';
-        }).join('');
-      }
-      setTxt('dashStatus','live · '+(scan.ai_enabled?'AI on':'scoring only')+' · '+new Date().toLocaleTimeString());
-      dashLoaded=true;
+      const engR=await fetch(API_BASE+'/v1/intelligence/engines',{headers});
+      if(!engR.ok)throw new Error(engR.status);
+      const eng=(await engR.json()).engines||[];
+      setTxt('kEngines',eng.filter(e=>e.implemented).length+'/'+eng.length);
+      document.getElementById('engineStrip').innerHTML=eng.map(e=>{
+        const col=e.status==='live'?'var(--signal)':e.status==='partial'?'var(--gold)':'var(--dim)';
+        return '<div class="kpi glass"><div class="k">'+esc(e.title)+'</div><div class="v" style="font-size:15px;color:'+col+'">'+e.status+'</div><div class="s">'+e.absorbs.length+' modules</div></div>';
+      }).join('');
+      setTxt('dashStatus','live · upload your leads to run a scan');
     }catch(e){
-      setTxt('dashStatus','demo mode — run the server or deploy for live data');
-      toast('Live data needs the server running / deployed');
+      setTxt('kEngines','—');
+      setTxt('dashStatus','offline — deploy or run the server to go live');
+    }
+    if(!clientData){
+      setTxt('kScore','—');setTxt('kRecover','—');setTxt('kRevivable','0');
+      const ta=document.getElementById('topActions');if(ta)ta.innerHTML=uploadPrompt();
+      const ro=document.getElementById('revivableOut');if(ro)ro.innerHTML='Upload a CSV to see ranked revivable leads.';
     }
   }
   async function uploadCsv(input){
@@ -759,14 +765,24 @@
     toast('Scoring '+file.name+'…');
     const fd=new FormData();fd.append('file',file);
     try{
-      const headers=await authHeaders();delete headers['Content-Type'];
+      const headers=await authHeaders();
       const r=await fetch(API_BASE+'/v1/ingest/csv?industry=real_estate',{method:'POST',headers,body:fd});
+      if(r.status===401){toast('Please sign in first');return}
       if(!r.ok)throw new Error(r.status);
-      const d=await r.json();
+      const d=await r.json();clientData=d;
+      const h=d.pipeline_health||{};
+      setTxt('kScore',h.score!=null?h.score:'—');
+      setTxt('kRecover',fmtUSD(d.total_recoverable));
+      setTxt('kRevivable',d.leads_parsed);
+      const leads=d.scored_leads||[];
+      document.getElementById('topActions').innerHTML = leads.slice(0,5).map(L=>
+        '<div class="action glass"><div class="ico" style="background:rgba(45,212,191,.15)">↻</div><div class="body"><h4>'+esc(L.id)+' · score '+L.dead_lead_score+'/100</h4><p>Cause: '+esc(L.objection)+' · best window in '+L.best_window_days+' days.</p><div class="meta"><span>recoverable <b>'+fmtUSD(L.expected_value)+'</b></span></div></div></div>'
+      ).join('')||uploadPrompt();
       document.getElementById('revivableOut').innerHTML=
-        '<p style="margin:0 0 12px;color:var(--muted)">Parsed <b style="color:var(--text)">'+d.leads_parsed+'</b> leads · recoverable <b style="color:var(--signal)">'+fmtUSD(d.total_recoverable)+'</b> · health '+(d.pipeline_health&&d.pipeline_health.score)+'/100</p>'+renderLeads(d.scored_leads);
+        '<p style="margin:0 0 12px;color:var(--muted)">Parsed <b style="color:var(--text)">'+d.leads_parsed+'</b> leads · recoverable <b style="color:var(--signal)">'+fmtUSD(d.total_recoverable)+'</b> · health '+(h.score)+'/100</p>'+renderLeads(leads);
+      setTxt('dashStatus','live · '+d.leads_parsed+' leads scored');
       toast('Scored '+d.leads_parsed+' leads ✓');
-    }catch(e){toast('Upload failed — is the server running?')}
+    }catch(e){toast('Upload failed — sign in and make sure the system is live')}
   }
 
   /* paywall */
