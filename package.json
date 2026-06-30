@@ -1,0 +1,23 @@
+{
+  "name": "revioai",
+  "version": "1.0.0",
+  "description": "Revio AI - Resurrect Dead Leads, Recover Lost Revenue",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": [
+    "revio",
+    "ai",
+    "leads"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
