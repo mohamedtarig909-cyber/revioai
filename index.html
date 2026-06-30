@@ -300,6 +300,7 @@
     .price{padding:26px}.cell{padding:22px}.main{padding:22px 16px}
   }
 </style>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <div id="prog"></div>
@@ -637,6 +638,9 @@
 <div class="toast glass" id="toast"></div>
 
 <script>
+  /* ── Vercel Web Analytics ── */
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  
   /* ── Supabase (real auth) ── */
   const SUPABASE_URL = "https://ufpbgagijhkmmfyqihil.supabase.co";
   const SUPABASE_ANON_KEY = "sb_publishable_x1zGB0kWH3DOe8uBnU1FWA_eGrqAaqr";
